@@ -21,8 +21,8 @@ typedef struct format
 	char *id;
 	int (*f)();
 } convert_match;
-
-
+int printf_dec(va_list args);
+int printf_int(va_list args);
 int _strlen(char *s);
 int _strlenc(const char *s);
 int _strlenc(const char *s);
