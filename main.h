@@ -19,7 +19,7 @@ typedef struct format
 	char *id;
 	int (*f)();
 } convert_match;
-
+int printf_bin(va_list val);
 int printf_dec(va_list args);
 int printf_int(va_list args);
 int _putchar(char c);
