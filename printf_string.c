@@ -3,7 +3,7 @@
  * printf_string: print string
  * @v: argument
  * Return :the length of the string
- * 
+ *
  */
 
 int ptintf_string(va_list v)
@@ -29,7 +29,6 @@ int ptintf_string(va_list v)
         }
         return (len);
 
-    }
-    
+    }   
 
 }
