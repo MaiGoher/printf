@@ -1,9 +1,11 @@
 #include "main.h"
 /**
-* printf_char:print char
-* @v: argument
-* Return:1
-*/
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
 int printf_char(va_list v)
 {
     char s;

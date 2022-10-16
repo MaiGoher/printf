@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * printf_precentage - prints %.
+ * printf_precentage - prints the char 37.
  * Return: 1.
  */
 int printf_precentage(void)

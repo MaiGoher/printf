@@ -1,9 +1,8 @@
 #include "main.h"
 /**
- * printf_string: print string
- * @v: argument
- * Return :the length of the string
- *
+ * printf_string - print a string.
+ * @v: argumen t.
+ * Return: the length of the string.
  */
 
 int ptintf_string(va_list v)
