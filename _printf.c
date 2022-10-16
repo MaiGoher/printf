@@ -8,7 +8,7 @@ int _printf(const char * const format, ...)
 {
 	convert_match m[] = {
 		{"%s", ptintf_string}, {"%c", printf_char},
-		{"%%", printf_precentage}, {"%i", printf_int}, {"%d", printf_dec}
+		{"%%", printf_precentage}
 	};
 
 	va_list args;
@@ -21,7 +21,7 @@ int _printf(const char * const format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		j = 4;
+		j = 2;
 		while (j >= 0)
 		{
 			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
