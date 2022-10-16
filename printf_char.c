@@ -1,15 +1,15 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * printf_char - prints a char.
+ * @val: arguments.
+ * Return: 1.
  */
-int printf_char(va_list v)
+int printf_char(va_list val)
 {
-    char s;
-    s = va_arg(v, int);
-    _putchar(s);
-    return (1);
+	char s;
+
+	s = va_arg(val, int);
+	_putchar(s);
+	return (1);
 }
