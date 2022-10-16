@@ -9,6 +9,7 @@ int _printf(const char * const format, ...)
 	convert_match m[] = {
 		{"%s", ptintf_string}, {"%c", printf_char},
 		{"%%", printf_precentage},
+		{"%i", printf_int}, {"%d", printf_dec}
 	};
 
 	va_list args;

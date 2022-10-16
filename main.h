@@ -7,6 +7,8 @@
 #include <limits.h>
 #include <unistd.h>
 
+
+
 /**
  * struct format - match the conversion specifiers for printf
  * @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
@@ -19,16 +21,15 @@ typedef struct format
 	char *id;
 	int (*f)();
 } convert_match;
-int printf_bin(va_list val);
-int printf_dec(va_list args);
-int printf_int(va_list args);
-int _putchar(char c);
-int printf_char(va_list v);
-int ptintf_string(va_list v);
+
+
 int _strlen(char *s);
 int _strlenc(const char *s);
+int _strlenc(const char *s);
 int printf_precentage(void);
-int _printf(const char * const format, ...);
-
+int printf_char(va_list val);
+int printf_string(va_list val);
+int _putchar(char c);
+int _printf(const char *format, ...);
 
 #endif
