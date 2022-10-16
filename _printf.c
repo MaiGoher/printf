@@ -7,7 +7,7 @@
 int _printf(const char * const format, ...)
 {
 	convert_match m[] = {
-		{"%s", ptintf_string}, {"%c", printf_char},
+		{"%s", printf_string}, {"%c", printf_char},
 		{"%%", printf_precentage}
 	};
 
