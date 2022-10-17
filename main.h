@@ -1,60 +1,36 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <limits.h>
+#include <unistd.h>
+
+
 
 /**
- * struct flags - struct containing flags to "turn on"
- * when a flag specifier is passed to _printf()
- * @plus: flag for the '+' character
- * @space: flag for the ' ' character
- * @hash: flag for the '#' character
+ * struct format - match the conversion specifiers for printf
+ * @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
+ * @f: type pointer to function for the conversion specifier
+ *
  */
-typedef struct flags
+
+typedef struct format
 {
-	int plus;
-	int space;
-	int hash;
-} flags_t;
+	char *id;
+	int (*f)();
+} convert_match;
 
-/**
- * struct printHandler - struct to choose the right function depending
- * on the format specifier passed to _printf()
- * @c: format specifier
- * @f: pointer to the correct printing function
- */
-typedef struct printHandler
-{
-	char c;
-	int (*f)(va_list ap, flags_t *f);
-} ph;
-
-/* print_nums */
-int print_int(va_list l, flags_t *f);
-void print_number(int n);
-int print_unsigned(va_list l, flags_t *f);
-int count_digit(int i);
-
-
-/* _printf */
-int _printf(const char *format, ...);
-
-/* get_print */
-int (*get_print(char s))(va_list, flags_t *);
-
-/* get_flag */
-int get_flag(char s, flags_t *f);
-
-/* write_funcs */
+int printf_dec(va_list args);
+int printf_int(va_list args);
+int _strlen(char *s);
+int _strlenc(const char *s);
+int _strlenc(const char *s);
+int printf_precentage(void);
+int printf_char(va_list val);
+int printf_string(va_list val);
 int _putchar(char c);
-int _puts(char *str);
-
-
-/* print_address */
-int print_address(va_list l, flags_t *f);
-
-/* print_percent */
-int print_percent(va_list l, flags_t *f);
+int _printf(const char *format, ...);
 
 #endif
