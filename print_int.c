@@ -1,85 +1,84 @@
 #include "main.h"
+
 /**
- * printf_int - prints integer
- * @args: argument to print
- * Return: number of characters printed
+ * print_int - prints an integer
+ * @l: va_list of arguments from _printf
+ * @f: pointer to the struct flags determining
+ * if a flag is passed to _printf
+ * Return: number of char printed
  */
-int print_int(va_list arguments, char *buf, unsigned int ibuf)
+int print_int(va_list l, flags_t *f)
 {
-	int int_input;
-	unsigned int int_in, int_temp, i, div, isneg;
+	int n = va_arg(l, int);
+	int res = count_digit(n);
 
-	int_input = va_arg(arguments, int);
-	isneg = 0;
-	if (int_input < 0)
-	{
-		int_in = int_input * -1;
-		ibuf = handl_buf(buf, '-', ibuf);
-		isneg = 1;
-	}
-	else
-	{
-		int_in = int_input;
-	}
-
-	int_temp = int_in;
-	div = 1;
-
-	while (int_temp > 9)
-	{
-		div *= 10;
-		int_temp /= 10;
-	}
-
-	for (i = 0; div > 0; div /= 10, i++)
-	{
-		ibuf = handl_buf(buf, ((int_in / div) % 10) + '0', ibuf);
-	}
-	return (i + isneg);
+	if (f->space == 1 && f->plus == 0 && n >= 0)
+		res += _putchar(' ');
+	if (f->plus == 1 && n >= 0)
+		res += _putchar('+');
+	if (n <= 0)
+		res++;
+	print_number(n);
+	return (res);
 }
 
 /**
- * printf_dec - prints decimal
- * @args: argument to print
- * Return: number of characters printed
+ * print_unsigned - prints an unsigned integer
+ * @l: va_list of arguments from _printf
+ * @f: pointer to the struct flags determining
+ * if a flag is passed to _printf
+ * Return: number of char printed
  */
-
-int printf_dec(va_list args)
+int print_unsigned(va_list l, flags_t *f)
 {
-	int n = va_arg(args, int);
-	int num, last = n % 10, digit;
-	int  i = 1;
-	int exp = 1;
+	unsigned int u = va_arg(l, unsigned int);
+	char *str = convert(u, 10, 0);
 
-	n = n / 10;
-	num = n;
+	(void)f;
+	return (_puts(str));
+}
 
-	if (last < 0)
+/**
+ * print_number - helper function that loops through
+ * an integer and prints all its digits
+ * @n: integer to be printed
+ */
+void print_number(int n)
+{
+	unsigned int n1;
+
+	if (n < 0)
 	{
 		_putchar('-');
-		num = -num;
-		n = -n;
-		last = -last;
-		i++;
+		n1 = -n;
 	}
-	if (num > 0)
-	{
-		while (num / 10 != 0)
-		{
-			exp = exp * 10;
-			num = num / 10;
-		}
-		num = n;
-		while (exp > 0)
-		{
-			digit = num / exp;
-			_putchar(digit + '0');
-			num = num - (digit * exp);
-			exp = exp / 10;
-			i++;
-		}
-	}
-	_putchar(last + '0');
+	else
+		n1 = n;
 
-	return (i);
+	if (n1 / 10)
+		print_number(n1 / 10);
+	_putchar((n1 % 10) + '0');
+}
+
+/**
+ * count_digit - returns the number of digits in an integer
+ * for _printf
+ * @i: integer to evaluate
+ * Return: number of digits
+ */
+int count_digit(int i)
+{
+	unsigned int d = 0;
+	unsigned int u;
+
+	if (i < 0)
+		u = i * -1;
+	else
+		u = i;
+	while (u != 0)
+	{
+		u /= 10;
+		d++;
+	}
+	return (d);
 }
