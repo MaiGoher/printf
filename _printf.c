@@ -9,7 +9,7 @@ int _printf(const char * const format, ...)
 	convert_match m[] = {
 		{"%s", printf_string}, {"%c", printf_char},
 		{"%%", printf_precentage}, {"%i", printf_int}, 
-		{"%d", printf_dec},
+		{"%d", printf_dec},{"%S", printf_exclusive_string}
 		{"%u", printf_unsigned},{"%o", printf_oct},
 		{"%x", printf_hex}, {"%X", printf_HEX}
 	};
@@ -24,7 +24,7 @@ int _printf(const char * const format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		j = 8;
+		j = 9;
 		while (j >= 0)
 		{
 			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
